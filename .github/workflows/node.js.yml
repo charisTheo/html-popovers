@@ -37,7 +37,7 @@ jobs:
     - uses: actions/upload-artifact@master
       with:
         name: page
-        path: build
+        path: ./build/**
         if-no-files-found: error
 
   deploy:
