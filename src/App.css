@@ -1,10 +1,7 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  text-align: justify;
+  min-height: 200vh;
+  padding: 2rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,25 +11,49 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
+#controls, #use-backdrops {
+  inset: unset;
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background-color: teal;
+  padding: 1rem;
+  font-weight: bold;
+  box-shadow: 0px 4px 12px 6px rgba(0 0 0 / 0.7);
+  text-align: end;
+  font-size: inherit;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  > label {
+    margin: .5rem auto;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: inherit;
+
+    &:has(input[data-checked="true"]) {
+      color: var(--accent-color);
+    }
+
+    &:hover {
+      outline: 3px solid white;
+    }
+    &:active {
+      outline: 3px solid color-mix(in srgb, teal, black);
+    }
+
+    &:last-child {
+      display: block;
+    }
+
+    > input[type="radio"] {
+      width: 20px;
+      height: 20px;
+    }
   }
 }

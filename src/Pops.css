@@ -1,0 +1,73 @@
+button:not(.close-button) {
+  border-width: 0px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: inherit;
+}
+
+button:hover {
+  background-color: color-mix(in srgb, teal, white);
+}
+button:active {
+  background-color: color-mix(in srgb, teal, white);
+}
+
+.close-button {
+  border: none;
+  padding: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+[popover], .popper-tooltip {
+  border: 3px solid teal;
+  border-radius: 10px;
+  padding: 0.25rem;
+  background-color: color-mix(in srgb, teal, black);
+  color: inherit;
+  font-size: initial;
+  padding-left: 1rem;
+}
+
+[popover]:not(#controls) {
+  width: max-content;
+  /* need to unset the inset styles on popovers for position-fallback to work */
+  inset: unset;
+  left: anchor(center);
+  right: anchor(center);
+  translate: -50% 0%;
+  position-fallback: --top-to-bottom;
+}
+
+main:has(input[name="popover-backdrops"]:not(:checked)) [popover]:popover-open::backdrop {
+  display: none;
+}
+
+/* Open popovers by default - Not promoted to top-layer though - Need to use JS */
+/* [popover]:not(:popover-open) {
+  display: block;
+  overlay: auto !important;
+} */
+
+@position-fallback --top-to-bottom {
+  @try {
+    bottom: anchor(top);
+    left: anchor(center);
+  }
+
+  @try {
+    top: anchor(bottom);
+    left: anchor(center);
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
