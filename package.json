@@ -4,6 +4,7 @@
   "homepage": "./",
   "private": true,
   "dependencies": {
+    "@floating-ui/react": "^0.24.3",
     "@popperjs/core": "^2.11.8",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

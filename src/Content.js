@@ -1,15 +1,23 @@
+import './Pops.css';
+
 import { useMemo, useState, useRef, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { createPopId, paragraphs } from './util';
 import Popover from './Popover';
 import Popper from './Popper';
-
-import './Pops.css';
+import FloatingUi from './FloatingUi';
 
 const MODES = {
   POPOVER: 'POPOVER',
   POPPER: 'POPPER',
+  FLOATING_UI: 'FLOATING_UI'
+}
+
+const COMPONENT = {
+  [MODES.POPOVER]: Popover,
+  [MODES.POPPER]: Popper,
+  [MODES.FLOATING_UI]: FloatingUi
 }
 
 function Content() {
@@ -29,7 +37,7 @@ function Content() {
       var output = cur;
 
       if (i % 5 === 0) {
-        const Component = mode === MODES.POPOVER ? Popover : Popper;
+        const Component = COMPONENT[mode];
         const id = createPopId(cur, pi, i)
         output = <Component key={id} text={cur} id={id} />
       }
@@ -82,6 +90,17 @@ function Content() {
             value={MODES.POPPER}
             checked={mode === MODES.POPPER}
             data-checked={mode === MODES.POPPER}
+          />
+        </label>
+        <label>
+          Floating UI
+          <input
+            onChange={handleModeToggle}
+            type='radio'
+            name='mode'
+            value={MODES.FLOATING_UI}
+            checked={mode === MODES.FLOATING_UI}
+            data-checked={mode === MODES.FLOATING_UI}
           />
         </label>
 
