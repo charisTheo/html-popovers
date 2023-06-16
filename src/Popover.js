@@ -26,7 +26,7 @@ function Popover({ text, id }) {
         id={id}
         style={{
           anchorDefault: `--anchor-${id}`,
-          anchorScroll: `anchor(--anchor-${id})`,
+          anchorScroll: `--anchor-${id}`,
         }}
       >
         <small>{text} popover</small>
