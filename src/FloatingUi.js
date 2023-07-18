@@ -1,24 +1,21 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useFloating, autoUpdate, flip } from '@floating-ui/react';
 
 function FloatingUi({ text, id }) {
+  const [isOpen, setIsOpen] = useState(true);
   const {refs, floatingStyles} = useFloating({
     whileElementsMounted: autoUpdate,
     placement: 'top',
     strategy: 'absolute',
-    middleware: [flip()]
+    middleware: [flip()],
+    open: isOpen
   });
 
-  useEffect(() => {
-    
-    return () => {
-    
-    }
-  }, [id])
+  const togglePopover = () => setIsOpen(!isOpen)
 
   return (
     <>
-      <button id={`button-${id}`} ref={refs.setReference}>
+      <button onClick={togglePopover} id={`button-${id}`} ref={refs.setReference}>
         {text}
       </button>
 
@@ -26,10 +23,10 @@ function FloatingUi({ text, id }) {
         ref={refs.setFloating}
         id={`tooltip-${id}`}
         className='floating-ui-tooltip'
-        style={floatingStyles}
+        style={{...floatingStyles, visibility: isOpen ? 'visible' : 'hidden'}}
       >
         <small>{text} floating</small>
-        <button className='close-button'>
+        <button className='close-button' onClick={togglePopover}>
           <span aria-hidden="true">❌</span>
           <span className="sr-only">Close</span>
         </button>
