@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPopper } from '@popperjs/core';
+import { block } from 'million/react';
 
 function Popper({ text, id }) {
   // const [popperOpen, setPopperOpen] = useState(false)
@@ -31,4 +32,4 @@ function Popper({ text, id }) {
   )
 }
 
-export default Popper;
+export default block(Popper);

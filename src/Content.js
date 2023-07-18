@@ -7,6 +7,7 @@ import { createPopId, paragraphs } from './util';
 import Popover from './Popover';
 import Popper from './Popper';
 import FloatingUi from './FloatingUi';
+import { block } from 'million/react';
 
 const MODES = {
   POPOVER: 'POPOVER',
@@ -119,4 +120,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default block(Content);

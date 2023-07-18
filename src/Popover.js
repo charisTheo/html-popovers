@@ -1,14 +1,15 @@
+import { block } from 'million/react';
 import { useEffect, useRef } from "react";
 
 function Popover({ text, id }) {
-  const ref = useRef();
+  const popoverRef = useRef();
 
   // Open all popovers by default with showPopover() - there is no browser API for default open
   useEffect(() => {
-    if (ref.current) {
-      ref.current.showPopover();
+    if (popoverRef.current) {
+      popoverRef.current.showPopover();
     }
-  }, [ref])
+  }, [popoverRef])
 
   return (
     <>
@@ -22,7 +23,7 @@ function Popover({ text, id }) {
 
       <span 
         popover="manual"
-        ref={ref}
+        ref={popoverRef}
         id={id}
         style={{
           anchorDefault: `--anchor-${id}`,
@@ -39,4 +40,4 @@ function Popover({ text, id }) {
   )
 }
 
-export default Popover;
+export default block(Popover);

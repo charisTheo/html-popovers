@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Content from './Content';
 
 import './App.css';
+import { block } from 'million/react';
 
 function App() {
   return (
@@ -15,4 +16,4 @@ function App() {
   );
 }
 
-export default App;
+export default block(App);

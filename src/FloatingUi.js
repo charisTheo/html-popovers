@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useFloating, autoUpdate, flip } from '@floating-ui/react';
+import { block } from 'million/react';
 
 function FloatingUi({ text, id }) {
   const {refs, floatingStyles} = useFloating({
@@ -38,4 +39,4 @@ function FloatingUi({ text, id }) {
   )
 }
 
-export default FloatingUi;
+export default block(FloatingUi);
